@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import KeyboardArrowLeftOutlinedIcon from '@mui/icons-material/KeyboardArrowLeftOutlined';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 
-import { datas } from '../../datas/SliderData';
+import { Sliderdatas } from '../../datas/SliderData';
 
 const Container = styled.div`
       width: 100%;
@@ -23,6 +24,8 @@ const SliderContainer = styled.div`
       width: 100%;
       height: 100%;
       display: flex;
+      transition: 500ms linear;
+      transform: translateX(${props => -props.slideIndex * 100}%);
 `
 
 const Slide = styled.div`
@@ -68,17 +71,35 @@ const SlideParagraph = styled.p`
 
 
 const Slider = () => {
+
+      const [slideIndex, setSlideIndex] = useState(0)
+
+      const moveSlide = (direction) => {
+
+            //index starts from0
+           const totalNumOfSlides = Sliderdatas.length - 1
+
+           if (direction === 'left') {
+                setSlideIndex(slideIndex > 0 ? slideIndex - 1: totalNumOfSlides)
+                return
+           }
+
+           if(direction === 'right'){
+               setSlideIndex(slideIndex < totalNumOfSlides ? slideIndex + 1 : 0)
+           }
+
+      }
   return (
     <Container>
-      <SlideChangeBtn direction="left">
+      <SlideChangeBtn direction="left" onClick={() => moveSlide('left')}>
             <KeyboardArrowLeftOutlinedIcon/>
       </SlideChangeBtn>
 
         <Wrapper>
-         <SliderContainer>
+         <SliderContainer slideIndex={slideIndex}>
 
           {
-            datas.map(data => (
+            Sliderdatas.map(data => (
           <Slide key={data.id}>
             <Image src={data.img} alt="slide-image"/>
             <SlideContent>
@@ -91,7 +112,7 @@ const Slider = () => {
          </SliderContainer>
         </Wrapper>
 
-        <SlideChangeBtn direction="right">
+        <SlideChangeBtn direction="right" onClick={() => moveSlide('right')}>
           <ChevronRightOutlinedIcon/>
           </SlideChangeBtn>
 

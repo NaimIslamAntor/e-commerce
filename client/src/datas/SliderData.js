@@ -1,7 +1,7 @@
 
 
 
-export const datas = [
+export const Sliderdatas = [
     {   id: 1,
         img: "https://images.pexels.com/photos/3987245/pexels-photo-3987245.jpeg?auto=compress&cs=tinysrgb&w=600",
         heading: "Best deal",
@@ -16,12 +16,6 @@ export const datas = [
 
     {   id: 3,
         img: "https://images.pexels.com/photos/5054535/pexels-photo-5054535.jpeg?auto=compress&cs=tinysrgb&w=600",
-        heading: "Best deal",
-        paragraph: "Best Deal of the year",
-    },
-
-    {   id: 4,
-        img: "hhttps://images.pexels.com/photos/5625130/pexels-photo-5625130.jpeg?auto=compress&cs=tinysrgb&w=600",
         heading: "Best deal",
         paragraph: "Best Deal of the year",
     },
