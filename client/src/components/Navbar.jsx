@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
+
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 const Container  = styled.div`
       width: 100%;
@@ -36,16 +38,19 @@ const NavContainer = styled.ul`
       position: fixed;
       top: 60px;
       left: ${props => (props.showMenu ? '0' : '-100%')};
+      bottom: 0;
       width: 100%;
       background-color: #fff;
       padding-left: 20px;
       transition: 300ms linear;
+      z-index: 100;
 
       @media (min-width: 768px) {
        flex-direction: row;
        position: initial;
        padding-left: 0;
        width: unset;
+       margin-top: 8px;
       }
 `
 
@@ -81,8 +86,9 @@ const MenuButton = styled.button`
       @media (min-width: 768px) {
        display: none;
       }
-
 `
+
+const TotalCartItems = styled.sub``
 
 const Navbar = () => {
 
@@ -111,6 +117,12 @@ const Navbar = () => {
                 </NavList>
                 <NavList>
                     <NavLink href="#">Contact</NavLink>
+                </NavList>
+                <NavList>
+                    <NavLink href="#">
+                        <ShoppingCartOutlinedIcon/>
+                        <TotalCartItems>5</TotalCartItems>
+                    </NavLink>
                 </NavList>
             </NavContainer>
 

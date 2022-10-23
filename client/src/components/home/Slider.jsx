@@ -34,6 +34,12 @@ const Slide = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
+    @media(min-width: 768px){
+      flex-direction: row;
+      }
+
 `
 
 const SlideChangeBtn = styled.button`
@@ -41,7 +47,7 @@ const SlideChangeBtn = styled.button`
       outline: none;
       background-color: #f7f7f7;
       position: absolute;
-      ${props => props.direction && props.direction}: 60px;
+      ${props => props.direction && props.direction}: 10px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
@@ -54,6 +60,7 @@ const Image = styled.img`
       width: 50%;
       height: 100%;
       object-fit: cover;
+
 `
 
 const SlideContent = styled.div`
@@ -62,12 +69,22 @@ const SlideContent = styled.div`
 
 const SlideHeading = styled.h3`
       text-align: center;
+      font-size: 25px;
+
+      @media(min-width: 768px){
       font-size: 35px;
+      }
 `
 
 const SlideParagraph = styled.p`
       text-align: center;
-      font-size: 20px;`
+      font-size: 15px;
+
+      @media(min-width: 768px){
+      font-size: 20px;
+      }
+
+      `
 
 
 const Slider = () => {
